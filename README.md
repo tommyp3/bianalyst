@@ -1,6 +1,6 @@
 # Analyst Exercise
 
-Welcome to the offline exercise. This is a chance for you to show us your grasp of crucial skills which play a key role in the day-to-day of a Analyst. If you feel that there are any questions that are unclear, please let us know.
+Welcome to the offline exercise. This is a chance for you to show us your grasp of crucial skills which play a key role in the day-to-day of a BI Analyst. If you feel that there are any questions that are unclear, please let us know.
 
 The exercise consists of three parts.
 
