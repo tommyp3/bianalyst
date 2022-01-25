@@ -12,7 +12,7 @@ The exercise consists of three parts.
 ## Overall Instructions
 
 * This exercise is due back within 7 calendar days of receipt.
-* Please follow the instruction listed before each portion of the exercise
+* Please follow the instruction listed before each portion of the exercise.
 * If you are confused by a specific question, you can request clarification by replying to the message that this exercise was attached to. Keep in mind we will not provide hints or any technical help with solving the problems in this exercise.
 * If you cannot answer a question, please do your best, show your work, leave comments, and let us know your general thoughts.
 We are interested in BOTH your answers and the work/code. Please leave plenty of comments for us to read when we review your work.
