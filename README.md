@@ -42,6 +42,12 @@ A few things to note before you get started:
 * Provide all code you used to answer questions, set up the db, and import data in the [SQL Directory](/sql/sql)
 * Leave comments where you feel clarity is needed.
 
+### Data
+
+* Usage.csv - Usage by account - search_type is synonymous with product.
+* crm_accounts.csv - Accounts from CRM system.
+* accounts.csv - Account data from product database.
+
 ### Questions
 
 1. How many accounts had usage in November?
