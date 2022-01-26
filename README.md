@@ -58,7 +58,7 @@ A few things to note before you get started:
 3. For the month of September, which product had the most usage?
 
 
-4. Produce a sql query that returns the number of accounts that have performed 3 or more searchtypes in the last 30 days.
+4. Produce a sql query that returns the number of accounts that have performed 3 or more searchtypes in the last 30 days of the dataset.
 
 
 ## Exploratory Problem
