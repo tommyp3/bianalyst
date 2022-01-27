@@ -1,0 +1,44 @@
+-- CREATE TABLES IN DATABASE
+-- Accounts
+CREATE TABLE accounts (
+  created_at timestamp,
+  account_id VARCHAR(18),
+  state VARCHAR
+)
+
+--CRM Accounts
+CREATE TABLE crm_accounts (
+  account_id VARCHAR(18),
+  industry VARCHAR,
+  region VARCHAR,
+  country VARCHAR,
+  use_case VARCHAR
+)
+
+-- Usage
+CREATE TABLE usage (
+  salesforce_id VARCHAR(18),
+  usage_date DATE,
+  is_test BOOLEAN,
+  search_type VARCHAR,
+  quantity INT
+)
+
+-- IMPORT DATA FROM CSV INTO TABLES
+-- Accounts
+copy accounts(created_at, account_id, state)
+FROM 'C:\Users\thoma\OneDrive\Documents\Ekata\accounts.csv'
+DELIMITER ','
+CSV HEADER;
+
+--CRM Accounts
+copy crm_accounts(account_id, industry, region, country, use_case)
+FROM 'C:\Users\thoma\OneDrive\Documents\Ekata\crm_accounts.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- Usage
+copy usage(salesforce_id, usage_date, is_test, search_type, quantity)
+FROM 'C:\Users\thoma\OneDrive\Documents\Ekata\usage.csv'
+DELIMITER ','
+CSV HEADER;
