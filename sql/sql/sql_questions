@@ -1,0 +1,46 @@
+-- Q: How many accounts had usage in November?
+-- A: The number of distinct salesforce_ids with usage record in november and non-test records is 151.
+SELECT COUNT(DISTINCT salesforce_id)
+FROM usage
+WHERE EXTRACT(month FROM usage_date) = 11
+	AND is_test = false;
+
+-- Q: Produce a sql query that returns the sum of usage.quantity for by month, by country, ranked from most to least.
+SELECT 
+EXTRACT(month FROM usage_date) AS month_num, 
+country, 
+SUM(u.quantity),
+RANK() OVER (PARTITION BY EXTRACT(month FROM usage_date) Order By SUM(u.quantity) DESC) usage_rank
+FROM usage u
+JOIN crm_accounts crm ON u.salesforce_id = crm.account_id
+GROUP BY 
+EXTRACT(month FROM usage_date), country
+ORDER BY 
+EXTRACT(month FROM usage_date), RANK() OVER (PARTITION BY EXTRACT(month FROM usage_date) Order By SUM(u.quantity) DESC);
+
+--Q: For the month of September, which product had the most usage?
+--A: name_match had the most use in the month of September
+SELECT a.search_type
+FROM (SELECT 
+	  search_type,
+	  sum(quantity) as total_quantity,
+	  RANK() OVER ( Order By SUM(quantity) DESC) quantity_rank 
+	  FROM usage
+	  WHERE EXTRACT(month FROM usage_date) = 9
+	  GROUP BY search_type
+	  ORDER BY sum(quantity) DESC) a
+WHERE quantity_rank = 1;
+
+-- Q: Produce a sql query that returns the number of accounts that have performed 3 or more searchtypes in the last 30 days.
+-- A: There are no records in the last 30 days. The latest usage date (2021-12-12) is over 30 days from today.
+SELECT COUNT(DISTINCT a.salesforce_id) from(
+	SELECT 
+	salesforce_id, COUNT(DISTINCT search_type) seach_type_count
+	FROM usage
+	WHERE usage_date > current_timestamp - interval '30 day'
+	GROUP BY salesforce_id
+	HAVING COUNT(DISTINCT search_type) >= 3
+	ORDER BY COUNT(DISTINCT search_type) DESC, salesforce_id)a;
+	
+SELECT MAX(usage_date)
+FROM usage;
